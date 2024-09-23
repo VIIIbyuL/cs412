@@ -36,7 +36,7 @@ def quote(request):
         'img_url': img_url
     }
 
-    return render(request, 'quote.html', context)
+    return render(request, 'quotes/quote.html', context)
 
 def show_all(request):
     '''
@@ -49,7 +49,7 @@ def show_all(request):
         'img_urls': img_urls
     }
 
-    return render(request, 'show_all.html', context)
+    return render(request, 'quotes/show_all.html', context)
 
 def about(request):
     '''
@@ -61,4 +61,4 @@ def about(request):
         'biography': biography
     }
 
-    return render(request, 'about.html', context)
+    return render(request, 'quotes/about.html', context)
