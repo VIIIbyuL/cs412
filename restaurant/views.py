@@ -78,6 +78,8 @@ def confirmation(request):
         for item in order_items:
             total_cost += special_items_prices[item['item']]
 
+        total_cost = round(total_cost, 2)
+
         unix_time = time.time() + random.randint(1800, 3600)  
         prep_time = time.strftime('%H:%M', time.localtime(unix_time)) 
         context = {

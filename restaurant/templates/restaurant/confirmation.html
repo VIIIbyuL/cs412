@@ -3,11 +3,13 @@
 {% block content %}
 <div class="confirm">
   <h2>Confirmation</h2>
-  <p>Thank you for placing an order, {{ customer_name }}. Email: {{ customer_email}}. Phone: {{ customer_phone }}</p>
+  <p>Thank you for placing an order, {{ customer_name }}.</p>
+  <p>Email: {{ customer_email}}.</p>
+  <p>Phone: {{ customer_phone }}</p>
 
 
   <p>Order Details:</p>
-  <ul>
+  <ol>
     {% for item in order_items %}
       <li>{{ item.item }}</li>
       {% if item.toppings and item.item == 'Pizza' %}
@@ -18,7 +20,7 @@
         </ol>
       {% endif %}
     {% endfor %}
-  </ul>
+  </ol>
 
   <p>The cost comes out to be: ${{ total_cost }}.</p>
 
