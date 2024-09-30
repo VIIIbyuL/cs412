@@ -130,3 +130,33 @@ form {
   color: #5e0909;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
+
+.hours {
+  display: flex;
+  background-color: #dcae96;
+  flex-direction: column;
+  align-items: center;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 50%;
+  gap: 10px;
+  height: auto;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.hours ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 0px;
+}
+
+.hours ul li {
+  margin: 5px;
+}
