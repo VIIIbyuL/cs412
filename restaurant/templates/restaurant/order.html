@@ -1,0 +1,118 @@
+{% extends 'restaurant/base.html' %} {% block content %}
+<div>
+  <h2>Order Now!</h2>
+
+  <form class="formClass" method="post" action="{% url 'confirmation' %}">
+    {% csrf_token %}
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="customer_name" required /><br /><br />
+    </div>
+
+    <div>
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="customer_phone" required /><br /><br />
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="customer_email"
+        required
+      /><br /><br />
+    </div>
+
+    <div>
+      <label for="special">Special of the day: {{ special }}</label>
+      <input
+        type="checkbox"
+        id="special"
+        name="special"
+        value="{{ special }}"
+      /><br /><br />
+    </div>
+
+    <div>
+      <label for="spaghetti">Spaghetti: 16.99</label>
+      <input
+        type="checkbox"
+        id="spaghetti"
+        name="spaghetti"
+        value="Spaghetti"
+      /><br /><br />
+    </div>
+
+    <div>
+      <label for="steak_eggs">Steak & Eggs: 23.99</label>
+      <input
+        type="checkbox"
+        id="steak_eggs"
+        name="steak_eggs"
+        value="Steak & Eggs"
+      /><br /><br />
+    </div>
+
+    <div>
+      <label for="cheeseburger">Cheeseburger: 19.99</label>
+      <input
+        type="checkbox"
+        id="cheeseburger"
+        name="cheeseburger"
+        value="Cheeseburger"
+      /><br /><br />
+    </div>
+
+    <div>
+      <label for="pizza">Pizza: 19.99</label>
+      <input
+        type="checkbox"
+        id="pizza"
+        name="pizza"
+        value="Pizza"
+      /><br /><br />
+
+      <label for="toppings"
+        >Choose additional toppings if you would like:</label
+      >
+      <label for="pepperoni">Pepperoni</label>
+      <input
+        type="checkbox"
+        id="pepperoni"
+        name="toppings"
+        value="Pepperoni"
+      />
+      <label for="mushrooms">Mushrooms</label>
+      <input
+        type="checkbox"
+        id="mushrooms"
+        name="toppings"
+        value="Mushrooms"
+      />
+      <label for="olives">Olives</label>
+      <input type="checkbox" id="olives" name="toppings" value="Olives" />
+      <label for="sausage">Sausage</label>
+      <input type="checkbox" id="sausage" name="toppings" value="Sausage" />
+    </div>
+
+    <div>
+      <label for="caesar_salad">Caesar Salad: 5.99</label>
+      <input
+        type="checkbox"
+        id="caesar_salad"
+        name="caesar_salad"
+        value="Caesar Salad"
+      /><br /><br />
+    </div>
+
+    <div>
+      <label for="special_instruction">Special Instructions:</label><br />
+      <textarea id="special_instructions" name="special_instructions"></textarea
+      ><br /><br />
+    </div>
+
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+{% endblock %}

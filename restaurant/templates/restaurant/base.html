@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Page</title>
+    <link rel="stylesheet" href="{% static 'restStyles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'main' %}">Home</a></li>
+          <li><a href="{% url 'order' %}">Order</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Welcome to the Restaurant!</h1>
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
