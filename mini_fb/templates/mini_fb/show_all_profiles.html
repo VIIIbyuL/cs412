@@ -8,6 +8,7 @@
 
 {% block content %}
     <h2>All Profiles</h2>
+    <!-- table header for field specification -->
     <table>
         <tr>
           <th>First Name</th>
@@ -16,6 +17,7 @@
           <th>Email</th>
           <th>Profile Picture</th>
         </tr>
+        <!-- loop over the profiles to display in the table -->
         {% for profile in profiles %}
         <tr>
           <td>{{ profile.first_name }}</td>
