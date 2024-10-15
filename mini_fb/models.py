@@ -4,6 +4,7 @@
 # includes the first name, last name, city, email, and profile URL
 
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Profile(models.Model):
@@ -28,8 +29,14 @@ class Profile(models.Model):
         '''
         gets all of the status messages for a profile
         '''
-        messages = StatusMessage.objects.filter(profile=self)
+        messages = StatusMessage.objects.filter(profile=self).order_by('timestamp')
         return messages
+    
+    def get_absolute_url(self):
+        '''
+        returns url to show the one profile
+        '''
+        return reverse('show_profile', kwargs={'pk': self.pk})
     
 class StatusMessage(models.Model):
     '''

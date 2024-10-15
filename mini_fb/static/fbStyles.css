@@ -72,3 +72,42 @@ footer p {
   text-align: center;
   font-weight: bold;
 }
+
+form {
+  display: flex;
+  background-color: #dcae96;
+  flex-direction: column;
+  align-items: center;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 80%;
+  gap: 10px;
+  height: auto;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.status-messages {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.status-messages li {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.create {
+  text-align: center;
+  width: 100%;
+}

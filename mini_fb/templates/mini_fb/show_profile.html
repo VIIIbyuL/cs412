@@ -1,6 +1,6 @@
 <!-- 
  File: show_profile.html
- Author: John kim (johnjk@bu.edu), 10/07/2024
+ Author: John kim (johnjk@bu.edu), 10/15/2024
  Description: this file is the show profile HTML template for mini_fb
 -->
 
@@ -28,13 +28,15 @@
 
 <!-- statusmsg display -->
 <h2>Status Messages!</h2>
+<div class="create">
+  <a href="{% url 'create_status' profile.pk %}">Create Status</a>
+</div>
 {% if profile.get_status_messages %}
   <ul class="status-messages">
     {% for message in profile.get_status_messages %}
       <li>
-        <div>{{ message.timestamp }}</div>
-        {{ message }}
-
+        {{ message }} <div></div>
+        {{ message.timestamp }}
       </li>
     {% endfor %}
   </ul>

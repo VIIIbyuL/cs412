@@ -1,0 +1,20 @@
+<!-- 
+ File: create_profile.html
+ Author: John kim (johnjk@bu.edu), 10/15/2024
+ Description: this file is the form to create profile
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Create a New Profile!</h2>
+<form method="post">
+  <table>
+    {% csrf_token %}
+    {{ form.as_table }}
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Create Profile"></td>
+  </table>
+</form>
+
+{% endblock %}

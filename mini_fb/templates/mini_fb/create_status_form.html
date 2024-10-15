@@ -1,0 +1,20 @@
+<!-- 
+ File: create_status_form.html
+ Author: John kim (johnjk@bu.edu), 10/15/2024
+ Description: this file is the form to create message
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Create a New Status Message!</h2>
+<form method="post">
+  <table>
+    {% csrf_token %}
+    {{ form.as_table }}
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Create Message"></td>
+  </table>
+</form>
+
+{% endblock %}
