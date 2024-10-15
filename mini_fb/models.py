@@ -23,3 +23,26 @@ class Profile(models.Model):
         returns a string representation of Profile
         '''
         return f"{self.first_name} {self.last_name}"
+    
+    def get_status_messages(self):
+        '''
+        gets all of the status messages for a profile
+        '''
+        messages = StatusMessage.objects.filter(profile=self)
+        return messages
+    
+class StatusMessage(models.Model):
+    '''
+    StatusMessage model that shows status message
+    '''
+
+    # data fields for a facebook user's status message
+    timestamp = models.DateTimeField(auto_now_add=True)
+    message = models.TextField(blank = False)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        '''
+        returns a string representation of StatusMessage
+        '''
+        return f"{self.message}" 

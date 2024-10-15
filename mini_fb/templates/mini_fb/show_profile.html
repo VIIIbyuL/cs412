@@ -1,0 +1,43 @@
+<!-- 
+ File: show_profile.html
+ Author: John kim (johnjk@bu.edu), 10/07/2024
+ Description: this file is the show profile HTML template for mini_fb
+-->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Show Profile!</h2>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>City</th>
+    <th>Email</th>
+    <th>Profile Picture</th>
+  </tr>
+  <!-- display the information -->
+  <tr>
+    <td>{{ profile.first_name }}</td>
+    <td>{{ profile.last_name }}</td>
+    <td>{{ profile.city }}</td>
+    <td>{{ profile.email }}</td>
+    <td><img src="{{ profile.profile_url }}" alt="{{ profile.first_name }}'s profile picture"></td>
+  </tr>
+</table>
+
+<!-- statusmsg display -->
+<h2>Status Messages!</h2>
+{% if profile.get_status_messages %}
+  <ul class="status-messages">
+    {% for message in profile.get_status_messages %}
+      <li>
+        <div>{{ message.timestamp }}</div>
+        {{ message }}
+
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}
+
