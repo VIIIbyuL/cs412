@@ -1,0 +1,22 @@
+<!-- 
+ File: update_profile_form.html
+ Author: John kim (johnjk@bu.edu), 10/211/2024
+ Description: this file is the update profiel HTML template for mini_fb
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Update Profile!</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_table }}
+  <td></td>
+  <td>
+    <button type="submit">Update</button>
+  </td>
+    
+</form>
+
+
+{% endblock %}

@@ -30,6 +30,7 @@
 <h2>Status Messages!</h2>
 <div class="create">
   <a href="{% url 'create_status' profile.pk %}">Create Status</a>
+  <a href="{% url 'update_profile' profile.pk %}">Update Profile</a>
 </div>
 {% if profile.get_status_messages %}
   <ul class="status-messages">
