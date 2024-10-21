@@ -50,6 +50,9 @@
         {% endif %}
       </li>
 
+      <a href="{% url 'delete_status' message.pk %}">Delete</a>
+          
+      <a href="{% url 'update_status' message.pk %}">Update</a>
       
     {% endfor %}
   </ul>

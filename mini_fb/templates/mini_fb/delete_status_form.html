@@ -1,0 +1,18 @@
+<!-- 
+ File: delete_staus_form.html
+ Author: John kim (johnjk@bu.edu), 10/15/2024
+ Description: this file is the form to delete message
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Delete message</h2>
+
+<p class="delete-status">{{ status_message }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes</button>
+  <a href="{% url 'show_profile' status_message.profile.pk %}">No</a>
+</form>
+
+{% endblock %}

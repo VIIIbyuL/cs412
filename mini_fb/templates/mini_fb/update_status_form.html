@@ -1,0 +1,23 @@
+<!-- 
+ File: update_staus_form.html
+ Author: John kim (johnjk@bu.edu), 10/15/2024
+ Description: this file is the form to delete message
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Update Status Message!</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_table }}
+  <td></td>
+  <td>
+    <button type="submit">Update</button>
+    <a href="{% url 'show_profile' form.instance.profile.pk %}">back</a>
+  </td>
+    
+</form>
+
+
+{% endblock %}
