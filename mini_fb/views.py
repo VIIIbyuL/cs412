@@ -70,6 +70,16 @@ class CreateStatusMessageView(CreateView):
         '''
         profile = Profile.objects.get(pk=self.kwargs['pk'])
         form.instance.profile = profile
+        status_msg = form.save()
+
+        # file uploads optional
+        file_uploads = self.request.FILES.getlist('files')
+
+        # create the images for the status messag upond the file oploads
+        for file in file_uploads:
+            img = Image(status_msg=status_msg, img_file=file)
+            img.save()
+
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
