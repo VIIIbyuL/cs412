@@ -37,7 +37,19 @@
       <li>
         {{ message }} <div></div>
         {{ message.timestamp }}
+
+        {% if message.get_images %}
+          <ul class="status-images">
+            {% for image in message.get_images %}
+              <li class="status-image">
+                <img src="{{ image.img_file.url }}" alt="{{ image.img_file }}">
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       </li>
+
+      
     {% endfor %}
   </ul>
 {% endif %}
