@@ -44,6 +44,7 @@
             {% for image in message.get_images %}
               <li class="status-image">
                 <img src="{{ image.img_file.url }}" alt="{{ image.img_file }}">
+                <p>{{ image.upload_time }}</p>
               </li>
             {% endfor %}
           </ul>
