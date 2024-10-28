@@ -1,0 +1,33 @@
+<!-- 
+ File: friend_suggestions.html
+ Author: John Kim (johnjk@bu.edu), 10/28/2024
+ Description: This file shows the news feed
+-->
+{% extends 'mini_fb/base.html' %} {% block content %}
+
+<h2>News Feed</h2>
+
+<div>
+  {% for message in news_feed %}
+  <div class="status-message">
+    <div class="profile">
+      <img
+        src="{{ message.profile.profile_url }}"
+        alt="{{ message.profile.first_name }}'s profile picture"
+        style="width: 50px; height: 50px"
+      />
+      {{ message.profile.first_name }} {{ message.profile.last_name }}
+    </div>
+    <p>"{{ message.message }}" created at {{ message.timestamp }}</p>
+    {% for image in message.get_images %}
+      <li class="status-image">
+        <img src="{{ image.img_file.url }}" alt="{{ image.img_file }}" />
+        <p>{{ image.upload_time }}</p>
+      </li>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+<a class="back-profile" href="{% url 'show_profile' profile.pk %}">Back to Profile</a>
+{% endblock %}

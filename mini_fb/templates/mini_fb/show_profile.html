@@ -4,9 +4,7 @@
  Description: this file is the show profile HTML template for mini_fb
 -->
 
-{% extends 'mini_fb/base.html' %}
-
-{% block content %}
+{% extends 'mini_fb/base.html' %} {% block content %}
 <h2>Show Profile!</h2>
 <table>
   <tr>
@@ -22,7 +20,12 @@
     <td>{{ profile.last_name }}</td>
     <td>{{ profile.city }}</td>
     <td>{{ profile.email }}</td>
-    <td><img src="{{ profile.profile_url }}" alt="{{ profile.first_name }}'s profile picture"></td>
+    <td>
+      <img
+        src="{{ profile.profile_url }}"
+        alt="{{ profile.first_name }}'s profile picture"
+      />
+    </td>
   </tr>
 </table>
 
@@ -33,30 +36,43 @@
   <a href="{% url 'update_profile' profile.pk %}">Update Profile</a>
 </div>
 {% if profile.get_status_messages %}
-  <ul class="status-messages">
-    {% for message in profile.get_status_messages %}
-      <li>
-        {{ message }} <div></div>
-        {{ message.timestamp }}
-
-        {% if message.get_images %}
-          <ul class="status-images">
-            {% for image in message.get_images %}
-              <li class="status-image">
-                <img src="{{ image.img_file.url }}" alt="{{ image.img_file }}">
-                <p>{{ image.upload_time }}</p>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+<ul class="status-messages">
+  {% for message in profile.get_status_messages %}
+  <li>
+    {{ message }}
+    <div></div>
+    {{ message.timestamp }} {% if message.get_images %}
+    <ul class="status-images">
+      {% for image in message.get_images %}
+      <li class="status-image">
+        <img src="{{ image.img_file.url }}" alt="{{ image.img_file }}" />
+        <p>{{ image.upload_time }}</p>
       </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </li>
 
-      <a href="{% url 'delete_status' message.pk %}">Delete</a>
-          
-      <a href="{% url 'update_status' message.pk %}">Update</a>
-      
-    {% endfor %}
-  </ul>
+  <a href="{% url 'delete_status' message.pk %}">Delete</a>
+
+  <a href="{% url 'update_status' message.pk %}">Update</a>
+
+  {% endfor %}
+</ul>
 {% endif %}
-{% endblock %}
+<h2>Friends list:</h2>
+<ul class="friends-list">
+  {% for friend in profile.get_friends %}
+  <li>
+    <a href="{% url 'show_profile' friend.pk %}"
+      >{{ friend.first_name }} {{ friend.last_name }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+<h2>Friend Suggestions:</h2>
+<a href="{% url 'show_friends_suggestions' pk=profile.id %}">See Who to Add</a>
 
+<h2>News Feed </h2>
+<a href="{% url 'show_news_feed' pk=profile.id %}">News Feed</a>
+{% endblock %}
