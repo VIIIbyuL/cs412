@@ -75,7 +75,7 @@ class CreateProfileView(CreateView):
         '''
         return reverse('show_profile', kwargs={'pk': self.object.pk})
 
-class CreateStatusMessageView(CreateView, LoginRequiredMixin):
+class CreateStatusMessageView(LoginRequiredMixin, CreateView):
     '''
     a view to create a status messages
     '''
@@ -133,7 +133,7 @@ class CreateStatusMessageView(CreateView, LoginRequiredMixin):
         '''
         return reverse('login')
     
-class UpdateProfileView(UpdateView, LoginRequiredMixin):
+class UpdateProfileView(LoginRequiredMixin, UpdateView):
     '''
     view to update profile data and save it
     '''
@@ -162,7 +162,7 @@ class UpdateProfileView(UpdateView, LoginRequiredMixin):
         return reverse('login')
     
 
-class DeleteStatusMessageView(DeleteView, LoginRequiredMixin):
+class DeleteStatusMessageView(LoginRequiredMixin, DeleteView):
     '''
     view to delete a status message
     '''
@@ -185,7 +185,7 @@ class DeleteStatusMessageView(DeleteView, LoginRequiredMixin):
         return reverse('login')
     
     
-class UpdateStatusMessageView(UpdateView, LoginRequiredMixin):
+class UpdateStatusMessageView(LoginRequiredMixin, UpdateView):
     '''
     view to update a status message
     '''
@@ -206,7 +206,7 @@ class UpdateStatusMessageView(UpdateView, LoginRequiredMixin):
         return reverse('login')
     
 
-class CreateFriendView(View, LoginRequiredMixin):
+class CreateFriendView(LoginRequiredMixin, View):
     '''
     view to add a friend
     '''
@@ -225,7 +225,7 @@ class CreateFriendView(View, LoginRequiredMixin):
         '''
         return reverse('login')
     
-class ShowFriendSuggestionsView(DetailView, LoginRequiredMixin):
+class ShowFriendSuggestionsView(LoginRequiredMixin, DetailView):
     '''
     view to show friend suggestions
     '''
@@ -257,7 +257,7 @@ class ShowFriendSuggestionsView(DetailView, LoginRequiredMixin):
         return reverse('login')
     
     
-class ShowNewsFeedView(DetailView, LoginRequiredMixin):
+class ShowNewsFeedView(LoginRequiredMixin, DetailView):
     '''
     view to show the news feed
     '''
