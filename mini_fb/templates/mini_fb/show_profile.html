@@ -31,11 +31,15 @@
 
 <!-- statusmsg display -->
 <h2>Status Messages!</h2>
+
+{% if user.is_authenticated and user == profile.user %}
 <div class="create">
-  <a href="{% url 'create_status' profile.pk %}">Create Status</a>
-  <a href="{% url 'update_profile' profile.pk %}">Update Profile</a>
+  <a href="{% url 'create_status' %}">Create Status</a>
+  <a href="{% url 'update_profile' %}">Update Profile</a>
 </div>
-{% if profile.get_status_messages %}
+{% else %}
+<div>You have to login/own to update profile!</div>
+{% endif %} {% if profile.get_status_messages %}
 <ul class="status-messages">
   {% for message in profile.get_status_messages %}
   <li>
@@ -53,11 +57,12 @@
     {% endif %}
   </li>
 
+  {% if user.is_authenticated and user == profile.user %}
   <a href="{% url 'delete_status' message.pk %}">Delete</a>
-
   <a href="{% url 'update_status' message.pk %}">Update</a>
-
-  {% endfor %}
+  {% else %}
+  <div>You have to own this to create/delete messages!</div>
+  {% endif %} {% endfor %}
 </ul>
 {% endif %}
 <h2>Friends list:</h2>
@@ -71,8 +76,15 @@
   {% endfor %}
 </ul>
 <h2>Friend Suggestions:</h2>
-<a href="{% url 'show_friends_suggestions' pk=profile.id %}">See Who to Add</a>
+{% if user.is_authenticated and user == profile.user %}
+<a href="{% url 'show_friends_suggestions' %}">See Who to Add</a>
+{% else %}
+<div>You have to login/ownto find friends!</div>
+{% endif %}
 
-<h2>News Feed </h2>
-<a href="{% url 'show_news_feed' pk=profile.id %}">News Feed</a>
-{% endblock %}
+<h2>News Feed</h2>
+{% if user.is_authenticated and user == profile.user %}
+<a href="{% url 'show_news_feed' %}">News Feed</a>
+{% else %}
+<div>You have to login/own to show news!</div>
+{% endif %} {% endblock %}

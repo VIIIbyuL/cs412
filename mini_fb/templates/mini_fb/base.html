@@ -7,36 +7,54 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- title specification -->
-  <title>mini fb</title>
-  <!-- linking style -->
-  <link rel="stylesheet" href="{% static 'fbStyles.css' %}">
-</head>
-<body>
-  <!-- header -->
-  <header>
-    <!-- navigation linkes -->
-    <nav>
-      <ul>
-        <li><a href="{% url 'show_all_profiles' %}">Show All</a></li>
-        <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <h1>Facebook Replica!</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title specification -->
+    <title>mini fb</title>
+    <!-- linking style -->
+    <link rel="stylesheet" href="{% static 'fbStyles.css' %}" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- navigation links -->
+      <nav> 
+        <ul>
+          <li><a href="{% url 'show_all_profiles' %}">Show All Profiles</a></li>
+          {% if user.is_authenticated %}
+            {% if user.profile and user.profile.id %}
+            <li>
+              <a href="{% url 'show_profile' user.profile.id %}">Show My Profile</a>
+            </li>
+            {% else %}
+            <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
+            {% endif %}
+          <li>
+            <form
+              method="post"
+              action="{% url 'logout' %}"
+            >
+              {% csrf_token %}
+              <input type="submit" value="Logout" />
+            </form>
+          </li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'create_profile' %}">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
 
-  <!-- block content -->
-  {% block content %}
-  {% endblock %}
+    <h1>Facebook Replica!</h1>
 
-  <!-- footer -->
-  <footer>
-    <p>created by John Kim</p>
-  </footer>
-  
-</body>
+    <!-- block content -->
+    {% block content %} {% endblock %}
+
+    <!-- footer -->
+    <footer>
+      <p>created by John Kim</p>
+    </footer>
+  </body>
 </html>

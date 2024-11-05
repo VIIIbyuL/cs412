@@ -5,12 +5,15 @@
 
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
     '''
     Profile model that represents a facebook user fields
     '''
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # data fields for a facebook user
     first_name = models.TextField(blank=False)

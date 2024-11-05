@@ -1,0 +1,14 @@
+<!-- 
+ File: friend_suggestions.html
+ Author: John Kim (johnjk@bu.edu), 11/03/2024
+ Description: This file shows the logout page
+-->
+{% extends 'mini_fb/base.html' %} {% block content %}
+<div class="logout">
+  <h2>Logout</h2>
+
+  <p>Logout Successful</p>
+
+  <a href="{% url 'login' %}">Login Again?</a>
+</div>
+{% endblock %}

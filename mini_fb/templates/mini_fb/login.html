@@ -1,0 +1,22 @@
+<!-- 
+ File: friend_suggestions.html
+ Author: John Kim (johnjk@bu.edu), 11/03/2024
+ Description: This file shows the login page
+-->
+{% extends 'mini_fb/base.html' %} 
+
+{% block content %}
+<h2>login</h2>
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{form}}
+    <!-- what to do after login success -->
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{request.GET.next}}">
+    {% else %}
+    <input type="hidden" name="next" value="{% url 'show_all_profiles' %}">
+    {% endif %}
+    <input type="submit" value="Login">
+</form>
+{% endblock %}
