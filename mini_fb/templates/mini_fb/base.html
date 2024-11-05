@@ -23,13 +23,9 @@
         <ul>
           <li><a href="{% url 'show_all_profiles' %}">Show All Profiles</a></li>
           {% if user.is_authenticated %}
-            {% if user.profile and user.profile.id %}
             <li>
               <a href="{% url 'show_profile' user.profile.id %}">Show My Profile</a>
             </li>
-            {% else %}
-            <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
-            {% endif %}
           <li>
             <form
               method="post"
