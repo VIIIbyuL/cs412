@@ -1,0 +1,139 @@
+/* # File: vaStyles.py
+# Author: John kim (johnjk@bu.edu), 11/11/2024
+# Description: this file contains the css styles for voter analytics
+ */
+
+html {
+  font-family: "Roboto", sans-serif;
+  background-color: #fffdd0;
+}
+
+img {
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+}
+
+nav {
+  background-color: slategrey;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li a:hover {
+  color: #dbdbdb;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  font-size: 3em;
+}
+
+table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+footer p {
+  text-align: center;
+  font-weight: bold;
+}
+
+form {
+  width: 50vw;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #dcae96;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.paginator ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+a, button {
+  text-decoration: none;
+  color: rgb(50, 16, 171);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+a:hover, button:hover {
+  color: red;
+}
+
+.graphes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.voter-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #dcae96;
+  width: 50vw;
+  border-radius: 20px;
+}
+
+.voter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

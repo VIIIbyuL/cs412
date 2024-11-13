@@ -1,0 +1,46 @@
+<!-- 
+ File: base.html
+ Author: John kim (johnjk@bu.edu), 10/07/2024
+ Description: this file is the showing a specific voter
+-->
+{% extends 'voter_analytics/base.html' %} {% block content %}
+<h2>Voter information</h2>
+
+<div class="voter-container">
+  <div class="voter-info">
+    <p>First Name: {{ voter.first_name }}</p>
+    <p>Last Name: {{ voter.last_name }}</p>
+    <p>
+      Address: {{ voter.street_number }} {{ voter.street_name }} 
+      {% if voter.apartment_number %} Apt {{ voter.apartment_number }} {% endif %} 
+      {{voter.zip_code }}
+    </p>
+    <p>Date of Birth: {{ voter.dob }}</p>
+    <p>Party Affiliation: {{ voter.party_affiliation }}</p>
+    <p>Voter Score: {{ voter.voter_score }}</p>
+    <p>Voter Date of Registration: {{ voter.dor }}</p>
+    <p>Precinct Number: {{ voter.precinct_number }}</p>
+    <p>Voting History:</p>
+    <ul>
+      <li>2020 State: {{ voter.v20state }}</li>
+      <li>2021 Town: {{ voter.v21town }}</li>
+      <li>2021 Primary: {{ voter.v21primary }}</li>
+      <li>2022 General: {{ voter.v22general }}</li>
+      <li>2023 Town: {{ voter.v23town }}</li>
+    </ul>
+  
+    <p>
+      <a
+        href="https://www.google.com/maps/search/?api=1&query={{ voter.street_number }}+{{ voter.street_name }}+{{ voter.zip_code }}"
+        target="_blank"
+      >
+        View on Google Maps
+      </a>
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p><a href="{% url 'voters' %}">Back to Voter List</a></p>
+</footer>
+{% endblock %}

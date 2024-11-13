@@ -1,0 +1,36 @@
+
+<!-- 
+ File: base.html
+ Author: John kim (johnjk@bu.edu), 11/11/2024
+ Description: this file is the base HTML template for voter_analytics
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voter Analytics</title>
+  <link rel="stylesheet" href="{% static 'vaStyles.css' %}">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'voters' %}">Voter List</a></li>
+        <li><a href="{% url 'graphes' %}">Graphes</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1>Voter Analytics!</h1>
+
+  {% block content %} {% endblock %}
+
+  <footer>
+    <p>created by John Kim</p>
+  </footer>
+
+  
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!-- 
+ File: base.html
+ Author: John kim (johnjk@bu.edu), 11/11/2024
+ Description: this file is the showing all voters in the database
+-->
+{% extends 'voter_analytics/base.html' %} {% block content %}
+<h2>All Voters</h2>
+<div>{% include 'voter_analytics/search.html'%}</div>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>Birthday</th>
+    <th>Party Affiliation</th>
+    <th>Voter Scores</th>
+  </tr>
+
+  <tbody>
+    {% for voter in voters %}
+    <tr>
+      <td><a href="{% url 'voter' voter.id %}">{{ voter.first_name }}</a></td>
+      <td><a href="{% url 'voter' voter.id %}">{{ voter.last_name }}</a></td>
+      <td>
+        {{ voter.street_number }} {{ voter.street_name }} 
+        {% if voter.apartment_number %} Apt {{ voter.apartment_number }} {% endif %}
+        {{ voter.zip_code }}
+      </td>
+      <td>{{ voter.dob }}</td>
+      <td>{{ voter.party_affiliation }}</td>
+      <td>{{ voter.voter_score }}</td>
+      <td>
+        <a href="{% url 'voter' voter.id %}">View</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="paginator">
+  {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li>
+      <span
+        ><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span
+      >
+    </li>
+    {% endif %}
+    <li class="">
+      <span
+        >Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span
+      >
+    </li>
+    {% if page_obj.has_next %}
+    <li>
+      <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</div>
+
+{% endblock %}

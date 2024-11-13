@@ -1,0 +1,72 @@
+<!-- 
+ File: base.html
+ Author: John kim (johnjk@bu.edu), 11/12/2024
+ Description: this file is the search form for graphes
+-->
+
+{% block content %}
+<h2>Search Form</h2>
+
+<form action="{% url 'graphes' %}">
+  <table>
+    <tr>
+      <label for="party_affiliation">Party Affiliation: </label>
+      <select name="party_affiliation" id="party_affiliation">
+        <option value="">n/a</option>
+        <option value="D">Democrat</option>
+        <option value="R">Republican</option>
+        <option value="CC">Constitution Party</option>
+        <option value="L">Libertarian Party</option>
+        <option value="T">Tea Party</option>
+        <option value="O">Other</option>
+        <option value="G">Green Party</option>
+        <option value="J">Independent Party</option>
+        <option value="Q">Reform Party</option>
+      </select>
+    </tr> <br>
+    <tr>
+      <label for="min_dob">Minimum Date of Birth: </label>
+      <select name="min_dob" id="min_dob">
+        <option value="">n/a</option>
+        {% for year in years %}
+          <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+    </tr><br>
+
+    <tr>
+      <label for="max_dob">Maximum Date of Birth: </label>
+      <select name="max_dob" id="max_dob">
+        <option value="">n/a</option>
+        {% for year in years %}
+          <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+    </tr><br>
+
+    <tr>
+      <label for="voter_score">Voter Score: </label>
+      <select name="voter_score" id="voter_score">
+        <option value="">n/a</option>
+        {% for score in scores %}
+          <option value="{{ score }}">{{ score }}</option>
+        {% endfor %}
+      </select>
+    </tr><br>
+
+    <tr>
+      <label for="voting_history">Voting History: </label><br>
+      <input type="checkbox" name="v20state">2020 State<br>
+      <input type="checkbox" name="v21town">2021 Town<br>
+      <input type="checkbox" name="v21primary">2021 Primary<br>
+      <input type="checkbox" name="v22general">2022 General<br>
+      <input type="checkbox" name="v23town">2023 Town<br>
+    </tr><br>
+
+    <tr>
+      <input type="submit">
+    </tr><br>
+  </table>
+
+</form>
+{% endblock %}

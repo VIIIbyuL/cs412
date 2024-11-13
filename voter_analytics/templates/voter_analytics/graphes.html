@@ -1,0 +1,16 @@
+<!-- 
+ File: base.html
+ Author: John kim (johnjk@bu.edu), 11/12/2024
+ Description: this file is the showing all the graphs
+-->
+{% extends 'voter_analytics/base.html' %} {% block content %}
+<h2>All Voters</h2>
+<div>{% include 'voter_analytics/graph_search.html'%}</div>
+
+<div class="graphes">
+  <div>{{ hist_graph|safe }}</div>
+  <div>{{ pie_graph|safe }}</div>
+  <div>{{ bar_graph|safe }}</div>
+</div>
+
+{% endblock %}
