@@ -8,7 +8,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Voter
-from django.db.models import F, IntegerField, Value
+from django.db.models import F, IntegerField, Value, Q
 import plotly ## NEW
 import plotly.graph_objects as go ## NEW
 
@@ -166,7 +166,15 @@ class GraphsListView(ListView):
                                      y=[v20sc, v21tc, v21pc, v22gc, v23tc])])
         
         total_voters = v20sc + v21tc + v21pc + v22gc + v23tc
-        fig.update_layout(title_text=f'Voter Distribution by Election (n={total_voters})',
+        distinct_voters_count = self.get_queryset().filter(
+            Q(v20state=True) |
+            Q(v21town=True) |
+            Q(v21primary=True) |
+            Q(v22general=True) |
+            Q(v23town=True)
+        ).count()
+
+        fig.update_layout(title_text=f'Voter Distribution by Election (n={distinct_voters_count})',
                           xaxis_title_text='Election',
                           yaxis_title_text='Voter Number',
                           width=800,
