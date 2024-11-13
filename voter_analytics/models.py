@@ -81,7 +81,7 @@ def load_data():
                 f"party_affiliation={fields[9].strip()}, precinct_number={fields[10].strip()}, "
                 f"v20state={fields[11].strip() == 'TRUE'}, v21town={fields[12].strip() == 'TRUE'}, "
                 f"v21primary={fields[13].strip() == 'TRUE'}, v22general={fields[14].strip() == 'TRUE'}, "
-                f"v23town={fields[15].strip() == 'TRUE'}, voter_score={fields[16].strip()}. Error: {e}")
+                f"v23town={fields[15].strip() == 'TRUE'}, voter_score={fields[16].strip()}.")
 
     # after the loop
     print("Done.")
