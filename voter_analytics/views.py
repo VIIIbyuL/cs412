@@ -165,7 +165,7 @@ class GraphsListView(ListView):
         fig = go.Figure(data=[go.Bar(x=['v20state', 'v21town', 'v21primary', 'v22general', 'v23town'], 
                                      y=[v20sc, v21tc, v21pc, v22gc, v23tc])])
         
-        fig.update_layout(title_text=f'Voter Distribution by Election (n={v20sc+v21tc+v21pc+v22gc+v23tc})',
+        fig.update_layout(title_text=f'Voter Distribution by Election (n=58769)',
                             xaxis_title_text='Election',
                             yaxis_title_text='Voter Number',
                             width=800,
