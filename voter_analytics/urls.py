@@ -9,5 +9,5 @@ urlpatterns = [
     path('', views.VotersListView.as_view(), name="voters"),
     path('searches', views.VotersListView.as_view(), name="searches"),
     path('voter/<int:pk>', views.VoterDetailView.as_view(), name="voter"),
-    path('graphes', views.GraphesListView.as_view(), name="graphes"),
+    path('graphs', views.GraphsListView.as_view(), name="graphs"),
 ]

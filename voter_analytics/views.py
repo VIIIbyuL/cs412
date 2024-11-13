@@ -80,12 +80,12 @@ class VoterDetailView(DetailView):
     template_name = 'voter_analytics/voter.html'
     context_object_name = 'voter'
 
-class GraphesListView(ListView):
+class GraphsListView(ListView):
     '''
     graphs list view 
     '''
     model = Voter
-    template_name = 'voter_analytics/graphes.html'
+    template_name = 'voter_analytics/graphs.html'
     context_object_name = 'voters'
 
     def get_queryset(self) -> QuerySet:
