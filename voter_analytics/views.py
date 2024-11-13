@@ -165,11 +165,12 @@ class GraphsListView(ListView):
         fig = go.Figure(data=[go.Bar(x=['v20state', 'v21town', 'v21primary', 'v22general', 'v23town'], 
                                      y=[v20sc, v21tc, v21pc, v22gc, v23tc])])
         
-        fig.update_layout(title_text=f'Voter Distribution by Election (n=58769)',
-                            xaxis_title_text='Election',
-                            yaxis_title_text='Voter Number',
-                            width=800,
-                            height=800,)
+        total_voters = v20sc + v21tc + v21pc + v22gc + v23tc
+        fig.update_layout(title_text=f'Voter Distribution by Election (n={total_voters})',
+                          xaxis_title_text='Election',
+                          yaxis_title_text='Voter Number',
+                          width=800,
+                          height=800,)
         bar_graph = plotly.offline.plot(fig, auto_open=False, output_type='div')
         context['bar_graph'] = bar_graph
 
