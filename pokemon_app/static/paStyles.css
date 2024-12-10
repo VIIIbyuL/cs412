@@ -1,0 +1,1045 @@
+/* 
+ File: paStyles.css
+ Author: John kim (johnjk@bu.edu), 12/01/2024
+ Description: this file contains the css styling for the pokemon app
+ */
+
+/* General Styles */
+body {
+  /* font family, color, margins, padding, textcolor */
+  font-family: 'Lato', sans-serif; 
+  background-color: #dbdbdb;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  /* solely for background images so that it fits and is fixed */
+  background-image: url('https://i.pinimg.com/originals/69/68/1e/69681ef4639fa37d34c05f824a597cb3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+  height: 100vh; /* Ensures the body takes up full viewport height */
+}
+
+/* titles and headings */
+h1, .pokedex-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #ff0000;
+  margin: 2rem 0;
+}
+
+/* the pokedex grid display setup */
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* wrapper for the card and perspective just enables a 3d effect */
+.p-card-wrapper {
+  perspective: 1000px;
+}
+
+/* pokemon card styles */
+.p-card {
+  position: relative;
+  background: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  border: 3px solid #ffcc00;
+  width: 250px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* hover effect for the card to make it seem more real */
+.p-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* pokemon card header */
+.p-card-header {
+  text-align: center;
+  background: linear-gradient(to bottom, #ffcc00, #ff0000);
+  padding: 1rem;
+  border-bottom: 3px solid #333;
+}
+
+/* defines the style for the image within */
+.p-card-image {
+  width: 80%;
+  height: 150px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+/* pokemon card body styles */
+.p-card-body {
+  text-align: center;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+/* pokemon card title style */
+.p-card-title {
+  font-size: 1.5rem;
+  color: #ff4500;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+/* pokemon card type style to make it stand out */
+.p-card-type {
+  font-size: 1rem;
+  color: #555555;
+  margin: 0.5rem 0;
+}
+
+/* stylized button to fit the orangey theme */
+.p-card-button {
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  background: #0074d9;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+/* hover effect for that button to make it pop */
+.p-card-button:hover {
+  background: #005bb5;
+  transform: translateY(-3px);
+}
+
+/* pokemon detail contianer styles */
+.pokemon-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* pokemon image styles */
+.pokemon-image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  border: 5px solid #ffcc00;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+}
+
+/* pokemon details styles */
+.pokemon-details {
+  text-align: left;
+  width: 100%;
+}
+
+/* defines paragraph in pokemon deatails */
+.pokemon-details p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+/* makes the types stand out more */
+.pokemon-details span.type {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* both types diff color to emphasize the pokeball theme ish */
+.type1 {
+  font-weight: bold;
+  color: #0074d9;
+}
+
+.type2 {
+  font-weight: bold;
+  color: #ff4500;
+}
+
+/* stats list style */
+.pokemon-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+/* stats list style */
+.pokemon-details li {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2rem;
+}
+
+/* stats list style */
+.pokemon-details li span {
+  font-weight: bold;
+  color: #444;
+}
+
+/* Back Button */
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: #0074d9;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Back Button Hover Effect */
+.back-button:hover {
+  background: #005bb5;
+  transform: translateY(-3px);
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.pagination ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pagination li {
+  display: flex;
+  align-items: center;
+}
+
+/* pagination arrow style */
+.pagination .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  background: #0074d9;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* hover effect for that arrow */
+.pagination .arrow:hover {
+  background: #005bb5;
+  transform: scale(1.1);
+}
+
+.pagination .page-info {
+  font-weight: bold;
+  color: #555;
+}
+
+/* pokemon flip effect */
+.pokemon-image-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 2rem auto;
+  perspective: 1000px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.pokemon-image-card:hover .content {
+  transform: rotateY(180deg);
+}
+
+/* front and back of card*/
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.front {
+  background: linear-gradient(to bottom, #ffcc00, #ff0000);
+  color: #ffffff;
+}
+
+.front img {
+  width: 80%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* sets the pokemon card back to be the real logo */
+.back {
+  background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/06485517-936a-481b-b86d-1c02bad4305f/dg5ccx9-4a644d34-551b-4b43-8c85-18e349b1f4b5.jpg/v1/fill/w_765,h_1044,q_70,strp/custom_pokemon_tcg_back_by_kennsenn_dg5ccx9-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTEyNSIsInBhdGgiOiJcL2ZcLzA2NDg1NTE3LTkzNmEtNDgxYi1iODZkLTFjMDJiYWQ0MzA1ZlwvZGc1Y2N4OS00YTY0NGQzNC01NTFiLTRiNDMtOGM4NS0xOGUzNDliMWY0YjUuanBnIiwid2lkdGgiOiI8PTgyNSJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.SEM5wLXXV4A6MmxFt-LWghIXj-NHWD5E56cOBJIAMpk') no-repeat center center;
+  background-size: cover; 
+  color: #ffffff;
+  transform: rotateY(180deg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* back content */
+.back .pokemon-info {
+  margin-top: 1rem;
+}
+
+/* form styles */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+input {
+  width: 500px;
+}
+
+select, button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #0074d9;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #ff0000;
+  margin: 2rem 0;
+}
+
+/* profile grid display */
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* prof card Styles */
+.profile-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid #ffcc00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* hover effect for realistic */
+.profile-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* prof card link style */
+.p-link {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  text-align: center;
+}
+
+/* profile image header */
+.profile-card-header {
+  background: linear-gradient(to bottom, #ffcc00, #ff0000);
+  padding: 1rem;
+  border-bottom: 3px solid #333;
+  text-align: center;
+}
+
+/* image style */
+.p-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  background: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+/* cool spin effect for the profile lol */
+.profile-card:hover .p-img {
+  transform: rotate(360deg);
+}
+
+/* profile details */
+.profile-card-body {
+  padding: 1rem;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  color: #0074d9;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+/* hover ffects */
+.profile-card:hover .profile-name {
+  color: #ff4500;
+  font-weight: bold;
+}
+/* container details just making the background pop */
+.profile-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  text-align: center;
+}
+
+/* profile section stylinh */
+/* name styles */
+.prof-name {
+  font-size: 2.5rem; 
+  color: #ffcc00; 
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #ff0000; 
+  margin-bottom: 1rem; 
+}
+
+/* picture styles */
+.prof-pfp {
+  width: 150px; 
+  height: 150px; 
+  object-fit: cover;  
+  border-radius: 50%;
+  border: 5px solid #ffcc00; 
+  margin-bottom: 1rem; 
+}
+
+/* email styles */
+.prof-email {
+  font-size: 1.2rem; 
+  color: #555; 
+  margin-bottom: 1.5rem; 
+}
+
+/* profile pokeinv heading stytlying */
+.prof-inv {
+  font-size: 1.8rem; 
+  color: #0074d9;
+  margin-bottom: 1rem; 
+  text-shadow: 1px 1px 0 #fff; 
+}
+
+/* list styling for the inventory */
+.prof-ul {
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+/* list item styling */
+.prof-ul li {
+  font-size: 1.2rem;
+  color: #333; 
+  background: #f8f9fa;
+  border: 2px solid #ffcc00; 
+  padding: 0.5rem 1rem; 
+  border-radius: 10px; 
+  margin-bottom: 0.5rem; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+/* hover effect for the list */
+.prof-ul li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* Pokémon Inventory List */
+.prof-ul {
+  list-style: none;
+  padding: 0; 
+  margin: 1rem 0; 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; 
+  justify-content: center; 
+}
+
+/* Pokémon Item Styles */
+.pokemon-item {
+  background: #f8f9fa; 
+  border: 2px solid #ffcc00; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 1rem; 
+  width: 220px; 
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+/* Hover Effect */
+.pokemon-item:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* no pokemon available styled placeholder */
+.no-pokemon {
+  width: auto; 
+  font-size: 1.2rem; 
+  font-weight: bold; 
+  color: #555; 
+}
+
+/* pokemon link style */
+.pokemon-link {
+  text-decoration: none; 
+  color: #333; 
+}
+
+/* hover effect for the pokemon link */
+.pokemon-link:hover .pokemon-name {
+  color: #0074d9; 
+}
+
+/* pokemon icon style */
+.pokemon-icon {
+  width: 80px; 
+  height: 80px; 
+  object-fit: contain; 
+  margin-bottom: 0.5rem; 
+}
+
+/* pokemon name style */
+.pokemon-name {
+  display: block; 
+  font-size: 1rem; 
+  font-weight: bold; 
+  margin-top: 0.5rem; 
+}
+
+/* add pokemon */
+.add-pokemon {
+  display: inline-block; 
+  padding: 0.8rem 1.5rem; 
+  margin-top: 1.5rem; 
+  background: linear-gradient(to right, #ffcc00, #ff4500); 
+  color: #ffffff;
+  font-weight: bold; 
+  font-size: 1rem; 
+  text-decoration: none; 
+  border-radius: 10px; 
+  border: 2px solid #cc3700;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+/* hover eff */
+.add-pokemon:hover {
+  background: linear-gradient(to right, #ff4500, #ffcc00); 
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4); 
+}
+
+/* active effect */
+.add-pokemon:active {
+  transform: translateY(1px); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+/* Form Container for adding pokemon and its styles below it*/
+.add-pokemon-form {
+  max-width: 400px; 
+  margin: 2rem auto; 
+  padding: 2rem; 
+  background: linear-gradient(to bottom, #ffefba, #ffffff);
+  border-radius: 15px; 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+  border: 2px solid #ffcc00; 
+}
+
+/* Form Fields */
+.add-pokemon-form input,
+.add-pokemon-form select,
+.add-pokemon-form textarea,
+.add-pokemon-form button {
+  display: block; 
+  width: 100%; 
+  max-width: 300px; 
+  padding: 0.6rem; 
+  margin: 0.5rem 0; 
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  font-size: 1rem; 
+  background: #fff; 
+  color: #333; 
+  box-sizing: border-box; 
+}
+
+/* input select styles */
+.add-pokemon-form input[type="text"],
+.add-pokemon-form select {
+  background: #ffffff; 
+  color: #333; 
+}
+
+/* focus styles */
+.add-pokemon-form input:focus,
+.add-pokemon-form select:focus {
+  outline: none;
+  border-color: #ff4500; 
+  box-shadow: 0 0 5px rgba(255, 69, 0, 0.7);
+}
+
+/* poke form button */
+.add-pokemon-form button {
+  background: linear-gradient(to right, #ffcc00, #ff4500);
+  color: #ffffff; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: background 0.3s, transform 0.2s; 
+}
+
+/* hover effect */
+.add-pokemon-form button:hover {
+  background: linear-gradient(to right, #ff4500, #ffcc00); 
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* active effect */
+.add-pokemon-form button:active {
+  transform: translateY(1px); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+/* link style */
+.add-pokemon-form a:hover {
+  color: #005bb5; 
+}
+
+/* general a link stlye */
+.a-link {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem; 
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(to right, #ffcc00, #ff4500);
+  text-decoration: none; 
+  border-radius: 8px; 
+  border: none; 
+  width: 150px; 
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* hover effect for a link */
+.a-link:hover {
+  background: linear-gradient(to right, #ff4500, #ffcc00); 
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* active effect */
+.a-link:active {
+  transform: translateY(1px); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* logout */
+.logout {
+  max-width: 400px; 
+  margin: 2rem auto; 
+  padding: 2rem; 
+  text-align: center;
+  background: linear-gradient(to bottom, #ffefba, #ffffff);
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.logout h2 {
+  font-size: 2rem; 
+  color: #ff4500; 
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.logout p {
+  font-size: 1.2rem; 
+  color: #333; 
+  margin-bottom: 1.5rem;
+}
+
+/* Navigation Styles */
+.nav {
+  padding: 1rem; 
+  position: sticky;
+  top: 0; 
+  z-index: 1000; 
+  
+}
+
+/* navbar link contianer */
+.nav ul {
+  list-style: none;
+  margin: 0; 
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; 
+  display: flex;
+  justify-content: space-evenly;
+}
+/* General Form Styles */
+.form-container {
+  max-width: 500px;
+  width: 75vw;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Form Heading */
+.form-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #ff4500;
+}
+
+/* Form Input and Group Styles */
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"],
+.form-container input[type="url"],
+.form-container textarea,
+.form-container input[type="hidden"],
+.form-container select {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Focus Styles */
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+  outline: none;
+  border-color: #ff4500;
+  box-shadow: 0 0 5px rgba(255, 69, 0, 0.7);
+}
+
+/* Trade Group Label */
+.form-container .trade-group {
+  display: block;
+  text-align: left;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Submit and Button Styles */
+.form-container input[type="submit"],
+.form-container button {
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(to right, #ffcc00, #ff4500);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Button Hover Effect */
+.form-container input[type="submit"]:hover,
+.form-container button:hover {
+  background: linear-gradient(to right, #ff4500, #ffcc00);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Button Active Effect */
+.form-container input[type="submit"]:active,
+.form-container button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Logout Form */
+.logout-button {
+  display: inline-block; 
+  margin: 0; 
+  padding: 0; 
+}
+
+/* button container style */
+.button-div {
+  display: flex; 
+  justify-content: space-evenly;
+  align-items: center; 
+}
+
+/* All Trades Container */
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+/* Page Container */
+.all-trades-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+/* Headings */
+.all-trades-container h2,
+.all-trades-container h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ff4500;
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #ffcc00;
+}
+
+/* Trade List */
+.all-trades-container ul {
+  margin-top: 1rem;
+  padding: 0;
+}
+
+/* list items for all trades */
+.all-trades-container ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #fffaf0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+/* Trade List Text */
+.all-trades-container ul li span {
+  display: block;
+  margin: 0.5rem 0;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Button styling */
+.trade-btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* Trade Detail Container */
+.trade-detail {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Trade Information Paragraphs */
+.trade-detail p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Pokémon Images */
+.trade-detail img {
+  display: block;
+  max-width: 100px;
+  max-height: 100px;
+  margin: 1rem auto;
+  border: 2px solid #ffcc00;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Conditional Message */
+.trade-detail p.trade-status {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 1rem;
+}
+
+/* Confirm Trade Form */
+.confirm-trade {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* header for confirm trrade */
+.confirm-trade h2 {
+  font-size: 1.8rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #ff4500;
+  margin-bottom: 1.5rem;
+}
+
+/* p style for confirm trade */
+.confirm-trade p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* confirm trade button style */
+.confirm-trade button {
+  background: linear-gradient(to right, #ffcc00, #ff4500);
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 50%; 
+}
+
+/* hover style for that button */
+.confirm-trade button:hover {
+  background: linear-gradient(to right, #ff4500, #ffcc00);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* active style for that button */
+.confirm-trade button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Graph Container */
+.graph-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+/* Graph Divs */
+.graph-container div {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+

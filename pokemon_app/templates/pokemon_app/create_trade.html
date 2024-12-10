@@ -1,0 +1,44 @@
+<!-- 
+ File: create_trade.html
+ Author: John kim (johnjk@bu.edu), 12/09/2024
+ Description: this file is the form to create a trade
+-->
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+
+<h2>Create a New Trade!</h2>
+
+<!-- this is the form for users to fill out and thus create a trade proposal to other users -->
+<form class="form-container" method="post" class="trade-form">
+  {% csrf_token %}
+  
+  <!-- this dropdown accomodates the receiver as in who do you want to trade with -->
+  <label class="trade-group" for="receiver">Choose a Trainer:</label>
+  <select id="receiver" name="receiver">
+      {% for profile in receivers %}
+      <option value="{{ profile.id }}">{{ profile.first_name }} {{ profile.last_name }}</option>
+      {% endfor %}
+  </select>
+
+  <!-- select one of your pokemon to trade with, nicknames respected -->
+  <label class="trade-group" for="pokemon_offer">Your Pokémon:</label>
+  <select id="pokemon_offer" name="pokemon_offer">
+      {% for pokemon in proposer_pokemon %}
+      <option value="{{ pokemon.id }}">{{ pokemon.nickname|default:pokemon.species.name }} (Level {{ pokemon.level }})</option>
+      {% endfor %}
+  </select>
+
+  <!-- select one of their pokemon to take -->
+  <label class="trade-group" for="pokemon_request">Requested Pokémon:</label>
+  <select id="pokemon_request" name="pokemon_request">
+      {% for pokemon in other_pokemon %}
+      <option value="{{ pokemon.id }}">{{ pokemon.nickname|default:pokemon.species.name }} (Level {{ pokemon.level }})</option>
+      {% endfor %}
+  </select>
+
+  <button type="submit">Propose Trade</button>
+  <a class="a-link" href="{% url 'show_profile' user.pokemon_profile.id %}">Back to Profile</a>
+</form>
+
+{% endblock %}

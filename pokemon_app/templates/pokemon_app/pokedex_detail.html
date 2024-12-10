@@ -1,0 +1,49 @@
+<!-- 
+ File: pokedex_detail.html
+ Author: John kim (johnjk@bu.edu), 12/08/2024
+ Description: this file shows one of the pokemon in the database
+-->
+
+{% extends 'pokemon_app/base.html' %} {% block content %}
+<div class="pokemon-detail-container">
+  <h1>{{ pokemon.name }}</h1>
+  <!-- pokemon image card, this is where i do that cool flip animation -->
+  <div class="pokemon-image-card">
+    <div class="content">
+      <div class="front">
+        <img src="{{ pokemon.pokemon_image.url }}" alt="{{ pokemon.name }}" />
+      </div>
+      <div class="back">
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- displays the pokemon details from the pokedex -->
+  <div class="pokemon-details">
+    <p>
+      Type:
+      <span class="type1">{{ pokemon.type1 }}</span>
+      {% if pokemon.type2 %}
+      <span class="type2">{{ pokemon.type2 }}</span>
+      {% endif %}
+    </p>
+    <p>Species: {{ pokemon.species }}</p>
+    <p>Height: {{ pokemon.height }}</p>
+    <p>Weight: {{ pokemon.weight }}</p>
+    <p>Abilities: {{ pokemon.abilities }}</p>
+    <p>Base Stats:</p>
+    <ul>
+      <li><span>HP:</span> {{ pokemon.base_hp }}</li>
+      <li><span>Attack:</span> {{ pokemon.base_atk }}</li>
+      <li><span>Defense:</span> {{ pokemon.base_def }}</li>
+      <li><span>Special Attack:</span> {{ pokemon.base_sp_atk }}</li>
+      <li><span>Special Defense:</span> {{ pokemon.base_sp_def }}</li>
+      <li><span>Speed:</span> {{ pokemon.base_speed }}</li>
+    </ul>
+  </div>
+  <!-- back to the pokedex for users -->
+  <a href="{% url 'pokedex' %}" class="back-button">Back to Pokédex</a>
+</div>
+
+{% endblock %}

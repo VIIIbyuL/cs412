@@ -1,0 +1,27 @@
+<!-- 
+ File: graphs.html
+ Author: John kim (johnjk@bu.edu), 12/10/2024
+ Description: this file displays the 3 graphs for the pokemon analytics page
+-->
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+<div class="graph-container">
+    <h1>Pokémon Analytics</h1>
+    <!-- each of these graphs are self explanatory and uses plotly divs to display -->
+    <div>
+        <h2>Number of Pokémon Caught by User</h2>
+        {{ caught_graph|safe }}
+    </div>
+
+    <div>
+        <h2>Pokémon Types Caught by Users</h2>
+        {{ type_graph|safe }}
+    </div>
+
+    <div>
+        <h2>Most Traded Pokémon Species</h2>
+        {{ traded_graph|safe }}
+    </div>
+</div>
+{% endblock %}

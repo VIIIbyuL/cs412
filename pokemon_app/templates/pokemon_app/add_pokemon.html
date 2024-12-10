@@ -1,0 +1,20 @@
+<!-- 
+ File: add_pokemon.html
+ Author: John kim (johnjk@bu.edu), 12/10/2024
+ Description: this file is the add pokemon form for adding pokemon to user profiles
+-->
+
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+<h1>Add a Pokémon</h1>
+
+<!-- form submits to add pokemon view to add to POKEMON table -->
+<form class="add-pokemon-form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Pokémon</button>
+    <!-- User back button to profile in case they change their mind -->
+    <a class="a-link" href="{% url 'show_profile' user.pokemon_profile.id %}">Back to Profile</a>
+</form>
+{% endblock %}

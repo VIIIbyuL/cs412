@@ -1,0 +1,39 @@
+<!-- 
+ File: view_trade.html
+ Author: John kim (johnjk@bu.edu), 12/01/2024
+ Description: this file is the view for trade details
+-->
+{% extends 'pokemon_app/base.html' %} 
+
+{% block content %}
+<div class="trade-detail">
+  <!-- displays trade details as in what pokemon they want to give and extra -->
+  <h1>Trade Details</h1>
+
+  <p><strong>Proposer:</strong> {{ trade.proposer }}</p>
+  <p><strong>Recipient:</strong> {{ trade.pokemon_request.trainer }}</p>
+
+  <h2>Proposer's Pokémon</h2>
+  <p>
+    <strong>{{ proposer_pokemon.nickname|default:proposer_pokemon.species.name }}</strong>
+    (Level {{ proposer_pokemon.level }})
+  </p>
+  <img src="{{ proposer_pokemon.species.pokemon_image.url }}" alt="{{ proposer_pokemon.species.name }}" />
+
+  <h2>Recipient's Pokémon</h2>
+  <p>
+    <strong>{{ receiver_pokemon.nickname|default:receiver_pokemon.species.name }}</strong>
+    (Level {{ receiver_pokemon.level }})
+  </p>
+  <img src="{{ receiver_pokemon.species.pokemon_image.url }}" alt="{{ receiver_pokemon.species.name }}" />
+  <!-- only when the trade is in progress can u accept to prevent reacceptance or rerejecting trades -->
+  {% if trade.status == 'in_progress' and user.pokemon_profile == trade.pokemon_request.trainer %}
+  <a href="{% url 'accept_trade' trade.pk %}" class="a-link">Accept Trade</a>
+  <a href="{% url 'reject_trade' trade.pk %}" class="a-link">Reject Trade</a>
+  {% else %}
+  <p class="trade-status">Trade Status: {{ trade.status }}</p>
+  {% endif %}
+
+  <a href="{% url 'show_all_trades' %}" class="a-link">Back to Trades</a>
+</div>
+{% endblock %}

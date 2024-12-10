@@ -1,0 +1,14 @@
+<!-- 
+ File: logged_out.html
+ Author: John Kim (johnjk@bu.edu), 12/09/2024
+ Description: This file shows the logout page
+-->
+{% extends 'pokemon_app/base.html' %} {% block content %}
+<div class="logout">
+  <h2>Logout</h2>
+
+  <p>Logout Successful</p>
+  <!-- redirects to login after logout if needed -->
+  <a class="a-link" href="{% url 'login' %}">Login Again?</a>
+</div>
+{% endblock %}

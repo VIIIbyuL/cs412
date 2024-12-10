@@ -1,0 +1,44 @@
+<!-- 
+ File: view_all_trades.html
+ Author: John kim (johnjk@bu.edu), 12/09/2024
+ Description: this file is the form to view all trades
+-->
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+<div class="all-trades-container">
+  <h2>All Trades</h2>
+
+  <div class="trades-section">
+    <h3>Proposed Trades</h3>
+    <ul>
+      <!-- fetches the proposed trades as in you offer something for their -->
+      {% for trade in proposed_trades %}
+      <li>
+        <span>You offered {{ trade.pokemon_offer.species.name }} to {{ trade.pokemon_request.trainer.user.username }} for {{ trade.pokemon_request.species.name }}.</span>
+        <span>Status: {{ trade.status }}</span>
+        <a href="{% url 'trade_detail' trade.pk %}" class="a-link">View Details</a>
+      </li>
+      {% empty %}
+      <li>No proposed trades.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="trades-section">
+    <h3>Received Trades</h3>
+    <ul>
+      <!-- fetches the received trades as in you receive an offer for one of your pokemon -->
+      {% for trade in received_trades %}
+      <li>
+        <span>{{ trade.proposer.user.username }} offered {{ trade.pokemon_offer.species.name }} for your {{ trade.pokemon_request.species.name }}.</span>
+        <span>Status: {{ trade.status }}</span>
+        <a href="{% url 'trade_detail' trade.pk %}" class="a-link">View Details</a>
+      </li>
+      {% empty %}
+      <li>No received trades.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- 
+ File: confirm_trade.html
+ Author: John kim (johnjk@bu.edu), 12/09/2024
+ Description: this file is the form to confirm a trade proposal
+-->
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+<div class="confirm-trade">
+  <!-- simple display to confirm -->
+  <h2>Confirm Trade Action</h2>
+  <p>
+    Are you sure you want to 
+    accept or reject
+    this trade?
+  </p>
+  
+  <!-- form submits to accept/reject view to confirm trades  -->
+  <form method="post">
+      {% csrf_token %}
+      <button type="submit">Confirm</button>
+      <a href="{% url 'show_profile' user.pokemon_profile.id %}" class="a-link">Cancel</a>
+  </form>
+</div>
+{% endblock %}

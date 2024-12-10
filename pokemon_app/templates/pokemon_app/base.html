@@ -1,0 +1,54 @@
+<!-- 
+ File: base.html
+ Author: John kim (johnjk@bu.edu), 12/01/2024
+ Description: this file is the base HTML template for pokemon
+-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title specification -->
+    <title>PokeInv</title>
+    <!-- linking style -->
+    <link rel="stylesheet" href="{% static 'paStyles.css' %}" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- nav bar with all the buttons -->
+      <nav class="nav">
+        <ul>
+          <!-- un login users alowed to see pokedex, profiles, and graphs -->
+          <li><a class="a-link" href="{% url 'pokedex' %}">Pokedex</a></li>
+          <li><a class="a-link" href="{% url 'show_all_profiles' %}">Profiles</a></li>
+          <li><a class="a-link" href="{% url 'pokemon_graphs' %}">Graphs</a></li>
+          <!-- if the user is logged in they can see their own profile and also logout -->
+          {% if user.is_authenticated %}
+            {% if user.pokemon_profile %}
+              <li>
+                <a class="a-link" href="{% url 'show_profile' user.pokemon_profile.id %}">Show My Profile</a>
+              </li>
+            {% endif %}
+            <li>
+              <form method="post" action="{% url 'logout' %}" class="logout-button">
+                  {% csrf_token %}
+                  <input class="a-link" type="submit" value="Logout" />
+              </form>
+            </li>
+          <!-- unlogged in users are prompted to login or create a profile (register) -->
+          {% else %}
+            <li><a class="a-link" href="{% url 'login' %}">Login</a></li>
+            <li><a class="a-link" href="{% url 'create_profile' %}">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <!-- block content -->
+    {% block content %} {% endblock %}
+
+  </body>
+</html>

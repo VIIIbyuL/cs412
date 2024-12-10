@@ -1,0 +1,17 @@
+<!-- 
+ File: edit_profile.html
+ Author: John kim (johnjk@bu.edu), 12/01/2024
+ Description: this file allows you to edit your own profile
+-->
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+<h2>Edit Profile</h2>
+<!-- this form displays a form as p with the filled out profile details so you can edit and save your changes -->
+<form class="form-container" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save Changes</button>
+  <a class="a-link" href="{% url 'show_profile' pk=profile.pk %}">Cancel</a>
+</form>
+{% endblock %}

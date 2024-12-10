@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'restaurant',
     'mini_fb',
     'voter_analytics',
+    'pokemon_app'
 ]
 
 MIDDLEWARE = [
@@ -130,5 +131,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # image url 
-IMG_URL = '/images/'
-IMG_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = '/images/'  # This is the URL prefix for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')  # This is the folder where media files are stored

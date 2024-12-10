@@ -1,0 +1,68 @@
+<!-- 
+ File: pokedex_list.html
+ Author: John kim (johnjk@bu.edu), 12/08/2024
+ Description: this file shows all the pokemon in the database
+-->
+{% extends 'pokemon_app/base.html' %}
+{% block content %}
+<h1 class="pokedex-title">Pokédex</h1>
+
+<!-- search form for querying pokemon by type, name, species -->
+<form method="get" action="">
+  <input type="text" name="search" placeholder="Search Pokémon by name, type, or species"
+         value="{{ search }}" />
+  <button type="submit">Search</button>
+</form>
+
+<div class="p-grid">
+  <!-- displays the pokemon with their image and brief details  -->
+  {% for pokemon in pokedex %}
+  <div class="p-card-wrapper">
+    <div class="p-card">
+      <div class="p-card-header">
+        <img
+          src="{{ pokemon.pokemon_image.url }}"
+          alt="{{ pokemon.name }} Image"
+          class="p-card-image"
+        />
+      </div>
+      <div class="p-card-body">
+        <h2 class="p-card-title">{{ pokemon.name }}</h2>
+        <p class="p-card-type">
+          Type: <span class="type1">{{ pokemon.type1 }}</span>{% if pokemon.type2 %} / <span class="type2">{{ pokemon.type2 }}</span>{% endif %}
+        </p>
+        <!-- users can see specifics by clicking here to see extended details -->
+        <a href="{% url 'pokedex_detail' pokemon.id %}" class="p-card-button">View Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if is_paginated %}
+  <ul>
+    {% if page_obj.has_previous %}
+    <li>
+      <a href="?page={{ page_obj.previous_page_number }}" class="arrow prev" aria-label="Previous">
+        &#9664; <!-- Left arrow -->
+      </a>
+    </li>
+    {% endif %}
+
+    <li class="page-info">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </li>
+
+    {% if page_obj.has_next %}
+    <li>
+      <a href="?page={{ page_obj.next_page_number }}" class="arrow next" aria-label="Next">
+        &#9654; <!-- Right arrow -->
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</div>
+
+{% endblock %}

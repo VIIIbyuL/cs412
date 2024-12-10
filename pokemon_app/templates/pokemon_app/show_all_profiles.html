@@ -1,0 +1,28 @@
+<!-- 
+ File: show_all_profiles.html
+ Author: John kim (johnjk@bu.edu), 12/01/2024
+ Description: this file is the show_all_profiles HTML template for PokeInv
+-->
+
+{% extends 'pokemon_app/base.html' %} 
+{% block content %}
+<h2 class="prof-title">All Profiles</h2>
+
+<div class="p-grid">
+  <!-- fetches all profiles ato be displayed on this page -->
+  {% for profile in profiles %}
+  <div class="profile-card">
+    <!-- by clicking, users can bring up a detailed profile page defined seperately -->
+    <a class="p-link" href="{% url 'show_profile' profile.pk %}">
+      <div class="profile-card-header">
+        <img class="p-img" src="{{ profile.profile_pfp }}" alt="Profile Picture" />
+      </div>
+      <div class="profile-card-body">
+        <h3 class="profile-name">{{ profile.first_name }} {{ profile.last_name }}</h3>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,57 @@
+<!-- 
+ File: show_profile.html
+ Author: John kim (johnjk@bu.edu), 12/01/2024
+ Description: this file is the show profile HTML template for pokemon_app
+-->
+{% extends 'pokemon_app/base.html' %}
+
+{% block content %}
+<div class="profile-container">
+  <h1 class="prof-name">{{ profile.first_name }} {{ profile.last_name }}</h1>
+  <img class="prof-pfp" src="{{ profile.profile_pfp }}" alt="Profile Picture" />
+  <p class="prof-email">Email: {{ profile.email }}</p>
+
+  <h2 class="prof-inv">PokeInv:</h2>
+  <ul class="prof-ul">
+    <!-- displays the pokemon list that the user possesses and displays none if they have none -->
+    {% if pokemon_list %} 
+      {% for pokemon in pokemon_list %}
+        <li class="pokemon-item">
+          <a href="{% url 'pokedex_detail' pokemon.species.id %}" class="pokemon-link">
+            <img src="{{ pokemon.species.pokemon_image.url }}" alt="{{ pokemon.species.name }}" class="pokemon-icon" />
+            <span class="pokemon-name">
+              {{ pokemon.nickname|default:pokemon.species.name }} (Level {{ pokemon.level }})
+            </span>
+          </a>
+        </li>
+      {% endfor %} 
+    {% else %}
+      <li class="no-pokemon">No Pokémon in Inventory</li>
+    {% endif %}
+  </ul>
+  <div class="button-div">
+    <div>
+      <!-- only when the user is authenticated can they add pokemon, trade, view their trades, and edit their profiles -->
+      {% if user.is_authenticated and user == profile.user %}
+        <a href="{% url 'add_pokemon' %}" class="a-link">Add Pokemon</a>
+      {% endif %}
+    </div>
+    <div>
+      {% if user.is_authenticated and user.pokemon_profile.id == profile.id %}
+        <a href="{% url 'create_trade' %}" class="a-link">Propose a Trade</a>
+      {% endif %}
+    </div>  
+    <div>
+      {% if user.is_authenticated and user.pokemon_profile.id == profile.id %}
+        <a href="{% url 'show_all_trades' %}" class="a-link">View All Trades</a>
+      {% endif %}
+    </div>
+    <div>
+      {% if user.is_authenticated and user.pokemon_profile.id == profile.id %}
+        <a href="{% url 'update_profile' profile.pk %}" class="a-link">Edit Profile</a>
+      {% endif %}
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
