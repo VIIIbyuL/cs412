@@ -192,9 +192,25 @@ class CreateTradeView(LoginRequiredMixin, CreateView):
         return context
     
     def form_valid(self, form):
-        # Set the proposer to the logged-in user's profile
-        form.instance.proposer = self.request.user.pokemon_profile
+        '''
+        Validate the trade before saving.
+        '''
+        proposer = self.request.user.pokemon_profile
+        form.instance.proposer = proposer
+
+        # get the selected Pokemon and receiver from the form
+        pokemon_offer = form.cleaned_data.get('pokemon_offer')
+        pokemon_request = form.cleaned_data.get('pokemon_request')
+
+        # check if the selected Pokemon is owned by the proposer
+        intended_receiver = form.cleaned_data.get('receiver')
+        if pokemon_request.trainer != intended_receiver:
+            form.add_error('pokemon_request', "The requested Pokémon is not owned by the selected Trainer! Please be sure to match the user with their Pokémon.")
+            return self.form_invalid(form)
+
+        # Save the trade
         return super().form_valid(form)
+
     
     def get_success_url(self):
         # Redirect to the user's profile page after creating the trade
@@ -309,8 +325,12 @@ class ViewAllTradesView(LoginRequiredMixin, ListView):
         # Attach proposed and received trades to the context
         context = super().get_context_data(**kwargs)
         profile = self.request.user.pokemon_profile
+        proposed_trades = Trade.objects.filter(proposer=profile)
+        received_trades = Trade.objects.filter(receiver=profile)
         context['proposed_trades'] = Trade.objects.filter(proposer=profile)
         context['received_trades'] = Trade.objects.filter(receiver=profile)
+        print("Proposed Trades:", proposed_trades)  # Debug
+        print("Received Trades:", received_trades)  # Debug
         return context
 
     def get_login_url(self):
