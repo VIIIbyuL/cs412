@@ -22,6 +22,7 @@
             <span class="pokemon-name">
               {{ pokemon.nickname|default:pokemon.species.name }} (Level {{ pokemon.level }})
             </span>
+            <!-- removes your owned pokeomn -->
             {% if user.is_authenticated and user == profile.user %}
             <form method="post" action="{% url 'remove_pokemon' pokemon.id %}">
               {% csrf_token %}
@@ -37,22 +38,25 @@
   </ul>
   <div class="button-div">
     <div>
-      <!-- only when the user is authenticated can they add pokemon, trade, view their trades, and edit their profiles -->
+      <!-- only when the user is authenticated can they add pokemon -->
       {% if user.is_authenticated and user == profile.user %}
         <a href="{% url 'add_pokemon' %}" class="a-link">Add Pokemon</a>
       {% endif %}
     </div>
     <div>
+      <!-- only when the user is authenticated can they propose a trade -->
       {% if user.is_authenticated and user.pokemon_profile.id == profile.id %}
         <a href="{% url 'create_trade' %}" class="a-link">Propose a Trade</a>
       {% endif %}
     </div>  
     <div>
+      <!-- only when the user is authenticated can they view all trades -->
       {% if user.is_authenticated and user.pokemon_profile.id == profile.id %}
         <a href="{% url 'show_all_trades' %}" class="a-link">View All Trades</a>
       {% endif %}
     </div>
     <div>
+      <!-- only when the user is authenticated and the profile is the user's profile can they edit profile -->
       {% if user.is_authenticated and user.pokemon_profile.id == profile.id %}
         <a href="{% url 'update_profile' profile.pk %}" class="a-link">Edit Profile</a>
       {% endif %}
