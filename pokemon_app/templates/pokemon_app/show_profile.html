@@ -22,10 +22,12 @@
             <span class="pokemon-name">
               {{ pokemon.nickname|default:pokemon.species.name }} (Level {{ pokemon.level }})
             </span>
+            {% if user.is_authenticated and user == profile.user %}
             <form method="post" action="{% url 'remove_pokemon' pokemon.id %}">
               {% csrf_token %}
               <button type="submit" class="a-link">Release Pokémon</button>
             </form>
+            {% endif %}
           </a>
         </li>
       {% endfor %} 
