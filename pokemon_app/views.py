@@ -3,7 +3,7 @@
 # Description: this file sets the views for pokemon app
 
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Profile, PokeDex, Pokemon, Trade
 from django.db.models import Q, Count
 from .forms import CreateProfileForm, CreatePokemonForm, CreateTradeForm
@@ -472,3 +472,19 @@ class GraphsListView(ListView):
 
         # all is attached to the context and returned to be displayed
         return context
+
+class RemovePokemonView(LoginRequiredMixin, DeleteView):
+    '''
+    A view to remove a Pokémon from the user's inventory.
+    '''
+    model = Pokemon
+    template_name = 'pokemon_app/remove_pokemon.html'
+
+    def get_success_url(self):
+        '''
+        Redirect to the user's profile page after removing the Pokémon.
+        '''
+        return reverse('show_profile', kwargs={'pk': self.request.user.pokemon_profile.pk})
+    
+    def get_queryset(self):
+        return Pokemon.objects.filter(trainer=self.request.user.pokemon_profile)

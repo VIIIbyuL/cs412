@@ -26,6 +26,7 @@ urlpatterns = [
   path(r'trade/all/', views.ViewAllTradesView.as_view(), name='show_all_trades'),
   path(r'profile/<int:pk>/update/', views.EditProfileView.as_view(), name='update_profile'),
   path('graphs/', views.GraphsListView.as_view(), name='pokemon_graphs'),
+  path(r'pokemon/<int:pk>/remove', views.RemovePokemonView.as_view(), name='remove_pokemon'),
 ]
 
 
