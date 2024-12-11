@@ -40,5 +40,8 @@
       {% endfor %}
     </ul>
   </div>
+  <div class="trade-profile">
+    <a class="a-link" href="{% url 'show_profile' user.pokemon_profile.id %}">Show My Profile</a>
+  </div>
 </div>
 {% endblock %}
